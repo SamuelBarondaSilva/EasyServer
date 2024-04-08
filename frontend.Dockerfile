@@ -3,6 +3,7 @@ FROM node:latest
 WORKDIR /usr/src/app
 
 RUN git clone https://github.com/SamuelBarondaSilva/EasyFront.git .
+RUN rm -rf .gitRUN rm -rf .git
 
 RUN npm install
 
