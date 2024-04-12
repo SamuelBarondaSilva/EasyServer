@@ -6,14 +6,16 @@ services:
     build:
       dockerfile: sql.Dockerfile
     command: --sql-mode="NO_ENGINE_SUBSTITUTION"
+    volumes:
+      - ./sql:/app
     restart: always
 
   api:
     image: api
     build:
       dockerfile: api.Dockerfile
-    environment:
-      - SQL_HOST=sql
+    volumes:
+      - ./api:/app
     restart: always
 
   frontend:
@@ -22,6 +24,6 @@ services:
       dockerfile: frontend.Dockerfile
     ports:
       - "80:80"
-    environment:
-      - API_HOST=api
+    volumes:
+      - ./frontend:/app
     restart: always
